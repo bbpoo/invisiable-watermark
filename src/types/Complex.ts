@@ -1,4 +1,4 @@
-export default class Complex {
+export class Complex {
   real: number = 0
   img: number = 0
 

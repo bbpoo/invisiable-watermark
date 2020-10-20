@@ -1,6 +1,6 @@
-import FFT from "./utils/FFT";
+import { FFT } from "./utils/FFT";
 
-export class ivWatermark {
+export default class ivWatermark {
   private context: any | null
   private size: number
   private sizeHalf: number
@@ -11,7 +11,7 @@ export class ivWatermark {
   private foreColor: string = 'rgba(0, 0, 0, 1)'
   private backColor: string = 'rgba(0, 0, 0, 0)'
 
-  constructor (ctx: any, size: number, scale: number, text: string, fontSize: number, foreColor: string, backColor: string) {
+  constructor (ctx: any, size: number, scale: number, text: string, foreColor: string, fontSize? : number, backColor?: string) {
     if (typeof ctx.canvas !== 'undefined') {
       if ((size & (size - 1)) === 0) {
         throw new Error('Error: the size of water mark must be the powers of 2.')
@@ -23,13 +23,23 @@ export class ivWatermark {
       }
       this.context = ctx
       this.watermarkText = text
-      this.watermarkFontSize = fontSize
+      if (typeof fontSize !== 'undefined') {
+        this.watermarkFontSize = fontSize
+      } else {
+        this.watermarkFontSize = 16
+      }
       this.watermarkScale = scale
       this.foreColor = foreColor
-      this.backColor = backColor
+      if (typeof backColor !== 'undefined') {
+        this.backColor = backColor
+      }
     } else {
       throw new Error('Error: invalid context.')
     }
+  }
+
+  public setFontSize(fontSize: number) {
+    this.watermarkFontSize = fontSize
   }
 
   draw () : string {

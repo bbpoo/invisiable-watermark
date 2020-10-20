@@ -1,6 +1,6 @@
-import Complex from '../types/Complex'
+import { Complex } from '../types/Complex'
 
-export default class FFT {
+export class FFT {
   private static bitRev = [] as number[]
   private static cosTbl = [] as number[]
   private static order = -1
