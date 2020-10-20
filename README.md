@@ -2,7 +2,11 @@
 A plugin to add un-recognizable watermark to web-based application.
 # Build
 * npm
-```npm run build
+```sh
+npm run build
+```
 * yarn
-```yarn build
+```sh
+yarn build
+```
 Compiled file will be generated in dist folder.
