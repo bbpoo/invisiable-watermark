@@ -1,0 +1,9 @@
+# Compiled output folders
+dist/
+
+# Packages
+node_modules/
+.idea/
+
+# Other files
+package-lock.json
