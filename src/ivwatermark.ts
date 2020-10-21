@@ -1,6 +1,6 @@
-import { FFT } from "./utils/FFT";
+import { FFT } from "./utils/FFT"
 
-export default class ivWatermark {
+export class ivWatermark {
   private context: any | null
   private size: number
   private sizeHalf: number

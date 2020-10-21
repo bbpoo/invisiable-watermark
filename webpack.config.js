@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     library: 'ivWatermark',
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
     libraryExport: 'ivWatermark',
     path: path.resolve(__dirname, './dist'),
     filename: "[name].js",
@@ -22,8 +22,8 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        include: /\.min\.js$/,
-        exclude: /\/ivWatermark/,
+        // include: /\.min\.js$/,
+        // exclude: /\/ivWatermark/,
       })
     ],
   },
