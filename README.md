@@ -12,3 +12,5 @@ yarn install
 yarn build
 ```
 Compiled file will be generated in dist folder.
+# Usage
+
