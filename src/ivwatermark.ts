@@ -38,19 +38,65 @@ export class IvWatermark {
     }
   }
 
-  public setFontSize(fontSize: number) {
+  public setContext (ctx: any) {
+    this.context = ctx
+  }
+
+  public getContext () {
+    return this.context
+  }
+
+  public setFontSize (fontSize: number) {
     this.watermarkFontSize = fontSize
   }
 
-  public getFontSize() {
+  public getFontSize () {
     return this.watermarkFontSize
   }
 
-  public setSize(size: number) {
-
+  public setSize (size: number) {
+    this.size = size
+    this.sizeHalf = size >> 1
+    this.sizeBySize = size * size
   }
 
-  draw () : string {
+  public getSize () {
+    return this.size
+  }
+
+  public setText (text: string) {
+    this.watermarkText = text
+  }
+
+  public getText () {
+    return this.watermarkText
+  }
+
+  public setScale (scale: number) {
+    this.watermarkScale = scale
+  }
+
+  public getScale () {
+    return this.watermarkScale
+  }
+
+  public setForeColor (color: string | number) {
+    if (typeof color === 'number') {
+      const r = color & 0xFF
+      const g = (color & 0xFF00) >>> 8
+      const b = (color & 0xFF0000) >>> 16
+      const a = (color & 0xFF000000) >>> 24
+      this.foreColor = 'rgba(' + [r, g, b, a].join(',') + ')'
+    } else if (typeof color === 'string') {
+      this.foreColor = color
+    }
+  }
+
+  public getForeColor () {
+    return this.foreColor
+  }
+
+  public draw () : string {
     if (this.context) {
       this.context.clearRect(0, 0, this.size, this.size)
       this.context.font = this.watermarkFontSize.toString(10) + 'px arial, sans-serif'
