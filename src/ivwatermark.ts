@@ -1,6 +1,6 @@
-import { FFT } from "./utils/FFT";
+import { FFT } from "./utils/FFT"
 
-export default class ivWatermark {
+export class IvWatermark {
   private context: any | null
   private size: number
   private sizeHalf: number
@@ -13,7 +13,7 @@ export default class ivWatermark {
 
   constructor (ctx: any, size: number, scale: number, text: string, foreColor: string, fontSize? : number, backColor?: string) {
     if (typeof ctx.canvas !== 'undefined') {
-      if ((size & (size - 1)) === 0) {
+      if ((size & (size - 1)) !== 0) {
         throw new Error('Error: the size of water mark must be the powers of 2.')
       } else {
         this.size = size
@@ -40,6 +40,14 @@ export default class ivWatermark {
 
   public setFontSize(fontSize: number) {
     this.watermarkFontSize = fontSize
+  }
+
+  public getFontSize() {
+    return this.watermarkFontSize
+  }
+
+  public setSize(size: number) {
+
   }
 
   draw () : string {

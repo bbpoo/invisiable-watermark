@@ -1,18 +1,18 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = {
+module.exports = [{
   mode: "production",
   devtool: 'nosources-source-map',
   entry: {
     'ivwatermark': "./src/ivwatermark.ts"
   },
   output: {
-    library: 'ivWatermark',
-    libraryTarget: 'umd',
-    libraryExport: 'ivWatermark',
+    library: 'IvWatermark',
+    libraryTarget: 'var',
+    libraryExport: 'IvWatermark',
     path: path.resolve(__dirname, './dist'),
-    filename: "[name].js",
+    filename: "[name]-js.js",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -22,8 +22,8 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        include: /\.min\.js$/,
-        exclude: /\/ivWatermark/,
+        // include: /\.min\.js$/,
+        // exclude: /\/IvWatermark/,
       })
     ],
   },
@@ -36,4 +36,29 @@ module.exports = {
       }
     ]
   }
-};
+}, {
+  mode: "development",
+  devtool: false,
+  entry: {
+    'ivwatermark': "./src/ivwatermark.ts"
+  },
+  output: {
+    library: 'IvWatermark',
+    libraryTarget: 'commonjs',
+    libraryExport: 'IvWatermark',
+    path: path.resolve(__dirname, './dist'),
+    filename: "[name]-commonjs.js",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+      }
+    ]
+  }
+}];
