@@ -12,7 +12,7 @@ module.exports = [{
     libraryTarget: 'var',
     libraryExport: 'IvWatermark',
     path: path.resolve(__dirname, './dist'),
-    filename: "[name]-js.js",
+    filename: "[name].js",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],

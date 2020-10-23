@@ -110,7 +110,7 @@ export class IvWatermark {
         this.context.textAlign = 'left'
         this.context.textBaseline = 'top'
         this.context.fillStyle = this.foreColor
-        this.context.fillText(this.watermarkText, -offset, offset)
+        this.context.fillText(this.watermarkText, -offset + this.watermarkFontSize * 0.5, offset)
         this.context.restore()
       } else {
         console.log('Warning: text of watermark is too long compared to watermark size: ' + this.size.toString(10) + ' px.')
