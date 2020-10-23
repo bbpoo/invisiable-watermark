@@ -6,4 +6,5 @@ node_modules/
 .idea/
 
 # Other files
-package-lock.json
+/package-lock.json
+/yarn.lock
